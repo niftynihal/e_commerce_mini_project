@@ -1,9 +1,17 @@
 import './App.css';
+import { NavBar } from './Components/NavBar';
+import { Routes, Route, Link } from "react-router-dom";
+import {Homepage} from "./Pages/Homepage"
+import { Shoppage } from './Pages/Shoppage';
 
 function App() {
   return (
     <div className="App">
-      <h1>Ecommerce application</h1>
+      <NavBar/>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/collections/all" element = {<Shoppage/>}/>
+      </Routes>
     </div>
   );
 }
