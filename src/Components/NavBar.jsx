@@ -14,11 +14,13 @@ const NavBar = () => {
             justify="center"
             >
                <Spacer/>
-               <Image src='https://cdn.shopify.com/s/files/1/0258/2485/4100/files/flatheads-logo-new-hotizontal_180x_2x_bf74c8db-79f1-4904-b343-3b0e2681ec07_352x46.png?v=1647508945' 
-                 alt='Flat heads icon' 
-                height="25px"
-                m = {5}
-               />
+               <Link to="/">
+                    <Image src='https://cdn.shopify.com/s/files/1/0258/2485/4100/files/flatheads-logo-new-hotizontal_180x_2x_bf74c8db-79f1-4904-b343-3b0e2681ec07_352x46.png?v=1647508945' 
+                    alt='Flat heads icon' 
+                    height="25px"
+                    m = {5}
+                    />
+               </Link>
                <Spacer/>
                <Link to="/collections/all">
                   <Text px={4} py={2} fontSize="xl">SHOP</Text>
