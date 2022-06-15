@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Text } from '@chakra-ui/react'
 import { Filter } from "../Components/Filter";
 import { Product } from "../Components/Product";
+import { Grid, GridItem } from '@chakra-ui/react'
 
 const Shoppage = () => {
     const loading = useSelector((state) => state.loading)
@@ -28,11 +29,11 @@ const Shoppage = () => {
                 <h1>Entities loading...</h1>
                 : error ? 
                     <h2>Something went wrong, please try again later</h2>
-                : <div>
+                : <Grid templateColumns='repeat(3, 1fr)' gap={6}>
                     {products.length > 0 && products.map((product) => {
                         return <Product key={product.id} product={product}/>
                     })}
-                </div>
+                </Grid>
             }
         </div>
     )
