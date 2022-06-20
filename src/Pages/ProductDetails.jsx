@@ -5,22 +5,33 @@ import { Filter } from "../Components/Filter";
 import { Product } from "../Components/Product";
 import { Grid, GridItem, Flex, Box, Text, HStack, Button } from '@chakra-ui/react'
 import {useParams} from "react-router-dom"
+import { addToCart } from "../Redux/Cart/action";
 
 const ProductDetails = () => {
-    const loading = useSelector((state) => state.loading)
-    const currentProduct = useSelector((state) => state.currentProduct)
-    const error = useSelector((state) => state.error)
+    const loading = useSelector((state) => state.product.loading)
+    const currentProduct = useSelector((state) => state.product.currentProduct)
+    const error = useSelector((state) => state.product.error)
 
     const {id} = useParams();
 
     const dispatch = useDispatch();
 
     const [size, setSize] = useState(null)
+
     useEffect(() => {
         if(id){
             dispatch(getCurrentProductData(id))
         }
     }, [dispatch, id])
+
+    const handleCart = () => {
+        let payload = {
+            ...currentProduct,
+            size
+        }
+
+        dispatch(addToCart(payload))
+    }
 
     if(loading){
         return <h1>Loading....</h1>
@@ -46,7 +57,9 @@ const ProductDetails = () => {
                         })
                     }
                 </HStack>
-                <Button bg="yellow" m={4} p={5} disabled={!size}>
+                <Button bg="yellow" m={4} p={5} disabled={!size}
+                    onClick = {handleCart}
+                >
                     {!size ? "PLEASE SELECT A SIZE" : "ADD TO CART"}
                 </Button>
             </Box>

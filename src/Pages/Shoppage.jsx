@@ -7,9 +7,9 @@ import { Product } from "../Components/Product";
 import { Grid, GridItem } from '@chakra-ui/react'
 
 const Shoppage = () => {
-    const loading = useSelector((state) => state.loading)
-    const products = useSelector((state) => state.products)
-    const error = useSelector((state) => state.error)
+    const loading = useSelector((state) => state.product.loading)
+    const products = useSelector((state) => state.product.products)
+    const error = useSelector((state) => state.product.error)
 
     const dispatch = useDispatch();
 
